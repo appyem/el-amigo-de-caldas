@@ -19,11 +19,8 @@ export function AgendaDetail() {
       try {
         setLoading(true);
         const data = await getAgendaById(id);
-        if (data && data.status === 'published') {
-          setEvent(data);
-        } else {
-          setError('Este evento no existe o no está publicado.');
-        }
+        if (data && data.status === 'published') setEvent(data);
+        else setError('Este evento no existe o no está publicado.');
       } catch (err) {
         setError('Error al cargar el evento.');
         console.error(err);
@@ -44,58 +41,63 @@ export function AgendaDetail() {
   if (error || !event) return <ErrorState title="Evento no encontrado" description={error || 'El evento que buscas no existe.'} />;
 
   return (
-    <div className="container-app py-12">
-      <Link to="/agenda" className="inline-flex items-center text-sm font-medium text-gray-600 hover:text-primary mb-8 transition-colors">
-        <FiArrowLeft className="mr-2 h-4 w-4" /> Volver a la agenda
-      </Link>
+    <div className="bg-slate-50 min-h-screen">
+      <section className="relative overflow-hidden bg-slate-900 py-16">
+        <div className="absolute inset-0 bg-party-gradient opacity-85" />
+        <div className="container-app relative z-10">
+          <Link to="/agenda" className="inline-flex items-center text-sm font-bold text-white/90 hover:text-white mb-6 transition-colors bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+            <FiArrowLeft className="mr-2 h-4 w-4" /> Volver a la agenda
+          </Link>
+        </div>
+      </section>
 
-      <motion.article 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-4xl mx-auto"
-      >
-        <Card className="overflow-hidden">
-          {event.imageUrl && (
-            <div className="aspect-video w-full bg-gray-100">
-              <img src={event.imageUrl} alt={event.title} className="w-full h-full object-cover" />
-            </div>
-          )}
-          <CardContent className="p-8 md:p-12">
-            <div className="flex flex-wrap gap-4 mb-6">
-              <div className="flex items-center gap-2 text-sm font-medium text-primary-700 bg-primary-50 px-3 py-1.5 rounded-full">
-                <FiCalendar className="h-4 w-4" />
-                <span>Inicio: {formatDateTime(event.startDate)}</span>
+      <div className="container-app -mt-12 relative z-10 pb-16">
+        <motion.article initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-4xl mx-auto">
+          <Card className="overflow-hidden shadow-2xl border-0">
+            {event.imageUrl && (
+              <div className="aspect-video w-full bg-slate-100 relative">
+                <img src={event.imageUrl} alt={event.title} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
-              {event.endDate && (
-                <div className="flex items-center gap-2 text-sm font-medium text-gray-700 bg-gray-100 px-3 py-1.5 rounded-full">
-                  <FiClock className="h-4 w-4" />
-                  <span>Fin: {formatDateTime(event.endDate)}</span>
+            )}
+            <CardContent className="p-8 md:p-12">
+              <div className="flex flex-wrap gap-3 mb-6">
+                <div className="flex items-center gap-2 text-sm font-bold text-red-600 bg-red-50 px-4 py-2 rounded-full">
+                  <FiCalendar className="h-4 w-4" />
+                  <span>Inicio: {formatDateTime(event.startDate)}</span>
                 </div>
-              )}
-            </div>
-            
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-              {event.title}
-            </h1>
-            
-            <div className="flex items-start gap-3 text-gray-700 mb-8 p-4 bg-gray-50 rounded-lg border border-gray-100">
-              <FiMapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="font-semibold text-gray-900">Ubicación</p>
-                <p className="text-gray-600">{event.location}</p>
+                {event.endDate && (
+                  <div className="flex items-center gap-2 text-sm font-bold text-green-700 bg-green-50 px-4 py-2 rounded-full">
+                    <FiClock className="h-4 w-4" />
+                    <span>Fin: {formatDateTime(event.endDate)}</span>
+                  </div>
+                )}
               </div>
-            </div>
+              
+              <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-8 leading-tight tracking-tight">
+                {event.title}
+              </h1>
+              
+              <div className="flex items-start gap-4 text-slate-700 mb-8 p-6 bg-gradient-to-br from-yellow-50 to-red-50 rounded-2xl border border-yellow-100">
+                <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-white shadow-md flex items-center justify-center">
+                  <FiMapPin className="h-6 w-6 text-red-600" />
+                </div>
+                <div>
+                  <p className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-1">Ubicación</p>
+                  <p className="text-lg text-slate-700">{event.location}</p>
+                </div>
+              </div>
 
-            <div className="prose prose-lg max-w-none text-gray-700">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Descripción del evento</h3>
-              <div className="whitespace-pre-wrap leading-relaxed">
-                {event.description}
+              <div className="prose prose-lg max-w-none">
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">Descripción del evento</h3>
+                <div className="whitespace-pre-wrap leading-relaxed text-slate-700 text-lg">
+                  {event.description}
+                </div>
               </div>
-            </div>
-          </CardContent>
-        </Card>
-      </motion.article>
+            </CardContent>
+          </Card>
+        </motion.article>
+      </div>
     </div>
   );
 }

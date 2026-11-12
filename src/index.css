@@ -4,23 +4,68 @@
 
 @layer base {
   :root {
-    --color-primary: 30 58 138;
-    --color-secondary: 16 185 129;
-    --color-accent: 245 158 11;
+    --color-primary: 230 51 41;
+    --color-secondary: 0 166 81;
+    --color-accent: 255 209 0;
   }
 
   html {
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-gray-50 text-gray-900;
+    @apply bg-slate-50 text-slate-900 antialiased;
+  }
+}
+
+@layer utilities {
+  /* Degradado principal del Partido de la U (Rojo -> Amarillo -> Verde) */
+  .bg-party-gradient {
+    background: linear-gradient(135deg, #E63329 0%, #FF9500 35%, #FFD100 50%, #00A651 80%, #0072CE 100%);
+  }
+  
+  .bg-party-gradient-soft {
+    background: linear-gradient(135deg, rgba(230,51,41,0.1) 0%, rgba(255,209,0,0.1) 50%, rgba(0,166,81,0.1) 100%);
   }
 
-  * {
-    @apply border-gray-200;
+  .text-party-gradient {
+    background: linear-gradient(135deg, #E63329, #FF7A00, #FFD100);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Efecto Vidrio (Glassmorphism) */
+  .glass {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .glass-dark {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* Botón con brillo (Glow) */
+  .btn-glow {
+    box-shadow: 0 10px 25px -5px rgba(230, 51, 41, 0.5);
+    transition: all 0.3s ease;
+  }
+  .btn-glow:hover {
+    box-shadow: 0 20px 35px -5px rgba(230, 51, 41, 0.7);
+    transform: translateY(-2px);
+  }
+
+  /* Patrón de fondo sutil */
+  .bg-grid-pattern {
+    background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 }
 
