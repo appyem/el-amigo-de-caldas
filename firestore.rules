@@ -27,6 +27,11 @@ service cloud.firestore {
       allow write: if isEditorOrAbove();
     }
     
+    match /solicitudes/{docId} {
+      allow create: if true;
+      allow read, update: if isEditorOrAbove();
+    }
+
     match /galeria/{docId} {
       allow read: if true;
       allow write: if isEditorOrAbove();
@@ -38,6 +43,11 @@ service cloud.firestore {
     }
 
     match /juegos/{docId} {
+      allow read: if true;
+      allow write: if isEditorOrAbove();
+    }
+
+    match /sliders/{docId} {
       allow read: if true;
       allow write: if isEditorOrAbove();
     }
