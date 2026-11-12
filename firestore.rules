@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    function isAdmin() {
+      return request.auth != null && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'super_admin'];
+    }
+
+    function isEditorOrAbove() {
+      return request.auth != null && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['editor', 'admin', 'super_admin'];
+    }
+
+    match /users/{userId} {
+      allow read: if request.auth != null && (request.auth.uid == userId || isAdmin());
+      allow write: if isAdmin();
+    }
+
+    match /noticias/{docId} {
+      allow read: if true;
+      allow write: if isEditorOrAbove();
+    }
+
+    match /agenda/{docId} {
+      allow read: if true;
+      allow write: if isEditorOrAbove();
+    }
+    
+    match /galeria/{docId} {
+      allow read: if true;
+      allow write: if isEditorOrAbove();
+    }
+
+    match /mapa/{docId} {
+      allow read: if true;
+      allow write: if isEditorOrAbove();
+    }
+
+    match /juegos/{docId} {
+      allow read: if true;
+      allow write: if isEditorOrAbove();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
