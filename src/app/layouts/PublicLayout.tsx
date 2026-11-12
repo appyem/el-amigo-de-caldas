@@ -37,20 +37,21 @@ export function PublicLayout() {
       {/* Header Glassmorphic */}
       <header className={cn(
         "sticky top-0 z-40 transition-all duration-300 border-b",
-        scrolled ? "glass border-slate-200/50 shadow-lg py-2" : "bg-white/90 border-slate-100 py-4"
+        scrolled ? "glass border-slate-200/50 shadow-lg py-2" : "bg-white/90 border-slate-100 py-3"
       )}>
         <div className="container-app">
           <div className="flex h-12 items-center justify-between">
-            <Link to="/" className="flex items-center gap-3 group">
+            {/* Logo con foto de Fredy + texto SIEMPRE visible */}
+            <Link to="/" className="flex items-center gap-2.5 group">
               <div className="relative">
                 <div className="absolute inset-0 bg-party-gradient rounded-full blur-md opacity-50 group-hover:opacity-80 transition-opacity" />
-                <div className="relative h-11 w-11 rounded-full overflow-hidden border-2 border-white shadow-md flex-shrink-0">
+                <div className="relative h-10 w-10 rounded-full overflow-hidden border-2 border-white shadow-md flex-shrink-0">
                   <img src={fredyLogo} alt="Fredy Arenas" className="h-full w-full object-cover" />
                 </div>
               </div>
-              <div className="hidden sm:block">
-                <p className="text-sm font-black text-slate-900 leading-tight tracking-tight">Fredy Arenas</p>
-                <p className="text-[10px] font-bold text-red-600 leading-tight uppercase tracking-wider">El Amigo de Caldas</p>
+              <div className="flex flex-col leading-tight">
+                <p className="text-sm font-black text-slate-900 tracking-tight">Fredy Arenas</p>
+                <p className="text-[10px] font-bold text-red-600 uppercase tracking-wider">El Amigo de Caldas</p>
               </div>
             </Link>
 
@@ -74,7 +75,7 @@ export function PublicLayout() {
               })}
             </nav>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               {user ? (
                 <Link to="/admin">
                   <button className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-bold text-white bg-party-gradient rounded-xl hover:opacity-90 transition-opacity shadow-md">
