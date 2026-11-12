@@ -119,7 +119,7 @@ export function Home() {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-yellow-400/30 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-red-600/40 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4" />
 
-        <div className="container-app relative z-10 py-12 md:py-20 w-full">
+        <div className="container-app relative z-10 py-12 pb-24 md:py-20 w-full">
           {loading ? (
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-white uppercase bg-white/10 backdrop-blur-md rounded-full border border-white/20">
@@ -214,8 +214,8 @@ export function Home() {
 
           {/* Controles del carrusel */}
           {!loading && allSlides.length > 1 && (
-            <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 md:gap-4 bg-black/20 backdrop-blur-md px-3 md:px-4 py-2 rounded-full border border-white/10">
-              <button onClick={prevSlide} className="h-8 w-8 rounded-full bg-white/10 hover:bg-white/30 flex items-center justify-center text-white transition-colors">
+            <div className="absolute bottom-2 md:bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 md:gap-4 bg-black/20 backdrop-blur-md px-2 md:px-4 py-1.5 rounded-full border border-white/10">
+              <button onClick={prevSlide} className="h-7 w-7 md:h-8 md:w-8 rounded-full bg-white/10 hover:bg-white/30 flex items-center justify-center text-white transition-colors">
                 <FiChevronLeft className="h-4 w-4" />
               </button>
               <div className="flex gap-1.5">
@@ -230,7 +230,7 @@ export function Home() {
                   />
                 ))}
               </div>
-              <button onClick={nextSlide} className="h-8 w-8 rounded-full bg-white/10 hover:bg-white/30 flex items-center justify-center text-white transition-colors">
+              <button onClick={nextSlide} className="h-7 w-7 md:h-8 md:w-8 rounded-full bg-white/10 hover:bg-white/30 flex items-center justify-center text-white transition-colors">
                 <FiChevronRight className="h-4 w-4" />
               </button>
             </div>
