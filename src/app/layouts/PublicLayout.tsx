@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/utils/cn';
 import { FiMenu, FiX, FiUser, FiLogIn } from 'react-icons/fi';
 import { useAuth } from '@/hooks/useAuth';
-import fredyLogo from '@/assets/fredy-arenas.jpg';
+import FreddyLogo from '@/assets/Freddy-arenas.jpg';
 import partidoLogo from '@/assets/partido-u.jpeg';
 
 const publicNavigation = [
@@ -41,16 +41,16 @@ export function PublicLayout() {
       )}>
         <div className="container-app">
           <div className="flex h-12 items-center justify-between">
-            {/* Logo con foto de Fredy + texto SIEMPRE visible */}
+            {/* Logo con foto de Freddy + texto SIEMPRE visible */}
             <Link to="/" className="flex items-center gap-2.5 group">
               <div className="relative">
                 <div className="absolute inset-0 bg-party-gradient rounded-full blur-md opacity-50 group-hover:opacity-80 transition-opacity" />
                 <div className="relative h-10 w-10 rounded-full overflow-hidden border-2 border-white shadow-md flex-shrink-0">
-                  <img src={fredyLogo} alt="Fredy Arenas" className="h-full w-full object-cover" />
+                  <img src={FreddyLogo} alt="Freddy Arenas" className="h-full w-full object-cover" />
                 </div>
               </div>
               <div className="flex flex-col leading-tight">
-                <p className="text-sm font-black text-slate-900 tracking-tight">Fredy Arenas</p>
+                <p className="text-sm font-black text-slate-900 tracking-tight">Freddy Arenas</p>
                 <p className="text-[10px] font-bold text-red-600 uppercase tracking-wider">El Amigo de Caldas</p>
               </div>
             </Link>
@@ -153,7 +153,7 @@ export function PublicLayout() {
                 <div className="relative">
                   <div className="absolute inset-0 bg-red-500 rounded-full blur-md opacity-40" />
                   <div className="relative h-14 w-14 rounded-full overflow-hidden border-2 border-white/20 shadow-xl">
-                    <img src={fredyLogo} alt="Fredy Arenas" className="h-full w-full object-cover" />
+                    <img src={FreddyLogo} alt="Freddy Arenas" className="h-full w-full object-cover" />
                   </div>
                 </div>
                 <div className="relative">
@@ -163,7 +163,7 @@ export function PublicLayout() {
                   </div>
                 </div>
                 <div>
-                  <p className="text-xl font-black tracking-tight">Fredy Arenas</p>
+                  <p className="text-xl font-black tracking-tight">Freddy Arenas</p>
                   <p className="text-sm text-slate-400 font-medium">El Amigo de Caldas</p>
                   <p className="text-xs font-bold text-yellow-400 uppercase tracking-wider mt-1">Partido de la U</p>
                 </div>
@@ -191,7 +191,7 @@ export function PublicLayout() {
             </div>
           </div>
           <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-            <p>© {new Date().getFullYear()} Fredy Arenas - El Amigo de Caldas. Todos los derechos reservados.</p>
+            <p>© {new Date().getFullYear()} Freddy Arenas - El Amigo de Caldas. Todos los derechos reservados.</p>
             <p>Diseñado con los colores del <span className="text-yellow-400 font-bold">Partido de la U</span> 🇨🇴</p>
           </div>
         </div>

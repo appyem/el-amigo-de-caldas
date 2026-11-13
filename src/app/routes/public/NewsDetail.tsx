@@ -35,8 +35,8 @@ export function NewsDetail() {
 
   // Actualizar meta tags dinámicamente con la imagen de la noticia
   useDynamicMeta({
-    title: news ? `${news.title} | Fredy Arenas - El Amigo de Caldas` : 'Cargando...',
-    description: news ? news.summary : 'Noticia de Fredy Arenas',
+    title: news ? `${news.title} | Freddy Arenas - El Amigo de Caldas` : 'Cargando...',
+    description: news ? news.summary : 'Noticia de Freddy Arenas',
     image: news?.imageUrl || undefined,
     url: typeof window !== 'undefined' ? window.location.href : undefined,
   });

@@ -28,7 +28,7 @@ export function Footer() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white">El Amigo de Caldas</h3>
-                <p className="text-sm text-gray-400">Fredy Arenas - Diputado</p>
+                <p className="text-sm text-gray-400">Freddy Arenas - Diputado</p>
               </div>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed">

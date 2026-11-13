@@ -83,7 +83,7 @@ export function AdminLayout() {
             <button className="relative rounded-lg p-2 text-gray-600 hover:bg-gray-100 transition-colors"><FiBell className="h-5 w-5" /><span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500" /></button>
             <div className="flex items-center gap-3">
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white text-sm font-medium">FA</div>
-              <div className="hidden sm:block"><p className="text-sm font-medium text-gray-900">Fredy Arenas</p><p className="text-xs text-gray-500">Administrador</p></div>
+              <div className="hidden sm:block"><p className="text-sm font-medium text-gray-900">Freddy Arenas</p><p className="text-xs text-gray-500">Administrador</p></div>
             </div>
           </div>
         </header>

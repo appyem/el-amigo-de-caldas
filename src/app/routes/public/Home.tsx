@@ -10,7 +10,7 @@ import { FiArrowRight, FiMapPin, FiCalendar, FiFileText, FiImage, FiBriefcase, F
 const DEFAULT_HERO_SLIDE = {
   id: 'default-hero',
   type: 'default' as const,
-  title: 'Fredy Arenas: Compromiso con Caldas',
+  title: 'Freddy Arenas: Compromiso con Caldas',
   subtitle: 'Abogado y Administrador de Negocios Internacionales. Impulsando el emprendimiento, la seguridad, el deporte y la cultura para generar empleo y bienestar en nuestros 27 municipios.',
   badge: 'Diputado Asamblea de Caldas • Partido de la U',
   linkText: 'Conoce mi gestión',
@@ -126,7 +126,7 @@ export function Home() {
                 <FiZap className="text-yellow-300" /> {DEFAULT_HERO_SLIDE.badge}
               </div>
               <h1 className="text-4xl md:text-7xl font-black leading-[1.1] text-white tracking-tight">
-                Fredy Arenas: <br />
+                Freddy Arenas: <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-100 to-white">
                   Compromiso con Caldas
                 </span>
@@ -179,9 +179,9 @@ export function Home() {
                   <h1 className="text-3xl md:text-7xl font-black leading-[1.1] text-white tracking-tight drop-shadow-xl">
                     {current.type === 'default' ? (
                       <>
-                        Fredy Arenas: <br />
+                        Freddy Arenas: <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-100 to-white">
-                          {current.title.replace('Fredy Arenas: ', '')}
+                          {current.title.replace('Freddy Arenas: ', '')}
                         </span>
                       </>
                     ) : (

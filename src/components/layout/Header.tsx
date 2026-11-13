@@ -31,7 +31,7 @@ export function Header() {
             </div>
             <div className="flex flex-col">
               <span className="text-lg font-bold text-gray-900">El Amigo de Caldas</span>
-              <span className="text-xs text-gray-500">Fredy Arenas</span>
+              <span className="text-xs text-gray-500">Freddy Arenas</span>
             </div>
           </Link>
 

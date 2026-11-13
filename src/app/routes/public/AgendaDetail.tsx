@@ -35,8 +35,8 @@ export function AgendaDetail() {
 
   // Actualizar meta tags dinámicamente con la imagen del evento
   useDynamicMeta({
-    title: event ? `${event.title} | Agenda Fredy Arenas` : 'Cargando...',
-    description: event ? `Evento en ${event.location}: ${event.description}` : 'Evento de Fredy Arenas',
+    title: event ? `${event.title} | Agenda Freddy Arenas` : 'Cargando...',
+    description: event ? `Evento en ${event.location}: ${event.description}` : 'Evento de Freddy Arenas',
     image: event?.imageUrl || undefined,
     url: typeof window !== 'undefined' ? window.location.href : undefined,
   });
@@ -92,7 +92,7 @@ export function AgendaDetail() {
               <div className="mb-8 pb-8 border-b border-slate-200">
                 <ShareButtons
                   title={event.title}
-                  description={`Evento en ${event.location} - Fredy Arenas El Amigo de Caldas`}
+                  description={`Evento en ${event.location} - Freddy Arenas El Amigo de Caldas`}
                   imageUrl={event.imageUrl}
                 />
               </div>
@@ -119,7 +119,7 @@ export function AgendaDetail() {
                 <p className="text-sm font-bold text-slate-700 mb-4">¿Te interesa este evento? Invita a otros:</p>
                 <ShareButtons
                   title={event.title}
-                  description={`Evento en ${event.location} - Fredy Arenas El Amigo de Caldas`}
+                  description={`Evento en ${event.location} - Freddy Arenas El Amigo de Caldas`}
                   imageUrl={event.imageUrl}
                 />
               </div>
