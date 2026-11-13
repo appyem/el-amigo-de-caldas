@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Loader } from '@/components/ui/Loader';
 import { ErrorState } from '@/components/ui/ErrorState';
+import { ShareButtons } from '@/components/common/ShareButtons';
+import { useDynamicMeta } from '@/hooks/useDynamicMeta';
 import { getNewsById, News } from '@/services/firebase/news';
 import { FiCalendar, FiArrowLeft } from 'react-icons/fi';
 
@@ -31,12 +33,20 @@ export function NewsDetail() {
     loadNews();
   }, [id]);
 
-  if (loading) return <Loader variant="fullscreen" text="Cargando noticia..." />;
-  if (error || !news) return <ErrorState title="Noticia no encontrada" description={error || 'La noticia que buscas no existe.'} />;
+  // Actualizar meta tags dinámicamente con la imagen de la noticia
+  useDynamicMeta({
+    title: news ? `${news.title} | Fredy Arenas - El Amigo de Caldas` : 'Cargando...',
+    description: news ? news.summary : 'Noticia de Fredy Arenas',
+    image: news?.imageUrl || undefined,
+    url: typeof window !== 'undefined' ? window.location.href : undefined,
+  });
 
-  const formattedDate = news.date instanceof Date 
+  const formattedDate = news?.date instanceof Date
     ? news.date.toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })
     : 'Fecha no disponible';
+
+  if (loading) return <Loader variant="fullscreen" text="Cargando noticia..." />;
+  if (error || !news) return <ErrorState title="Noticia no encontrada" description={error || 'La noticia que buscas no existe.'} />;
 
   return (
     <div className="bg-slate-50 min-h-screen">
@@ -63,11 +73,20 @@ export function NewsDetail() {
                 <FiCalendar className="h-4 w-4" />
                 <span>{formattedDate}</span>
               </div>
-              
-              <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-8 leading-tight tracking-tight">
+
+              <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight tracking-tight">
                 {news.title}
               </h1>
-              
+
+              {/* Botones de compartir debajo del título */}
+              <div className="mb-8 pb-8 border-b border-slate-200">
+                <ShareButtons
+                  title={news.title}
+                  description={news.summary}
+                  imageUrl={news.imageUrl}
+                />
+              </div>
+
               <div className="prose prose-lg max-w-none">
                 <p className="text-xl text-slate-700 font-medium mb-8 leading-relaxed border-l-4 border-red-500 pl-6 bg-red-50/50 py-4 pr-4 rounded-r-lg">
                   {news.summary}
@@ -75,6 +94,16 @@ export function NewsDetail() {
                 <div className="whitespace-pre-wrap leading-relaxed text-slate-700 text-lg">
                   {news.content}
                 </div>
+              </div>
+
+              {/* Botones de compartir al final también */}
+              <div className="mt-12 pt-8 border-t border-slate-200">
+                <p className="text-sm font-bold text-slate-700 mb-4">¿Te gustó esta noticia? Compártela:</p>
+                <ShareButtons
+                  title={news.title}
+                  description={news.summary}
+                  imageUrl={news.imageUrl}
+                />
               </div>
             </CardContent>
           </Card>

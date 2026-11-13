@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Loader } from '@/components/ui/Loader';
 import { ErrorState } from '@/components/ui/ErrorState';
+import { ShareButtons } from '@/components/common/ShareButtons';
+import { useDynamicMeta } from '@/hooks/useDynamicMeta';
 import { getAgendaById, AgendaEvent } from '@/services/firebase/agenda';
 import { FiCalendar, FiMapPin, FiArrowLeft, FiClock } from 'react-icons/fi';
 
@@ -30,6 +32,14 @@ export function AgendaDetail() {
     };
     loadEvent();
   }, [id]);
+
+  // Actualizar meta tags dinámicamente con la imagen del evento
+  useDynamicMeta({
+    title: event ? `${event.title} | Agenda Fredy Arenas` : 'Cargando...',
+    description: event ? `Evento en ${event.location}: ${event.description}` : 'Evento de Fredy Arenas',
+    image: event?.imageUrl || undefined,
+    url: typeof window !== 'undefined' ? window.location.href : undefined,
+  });
 
   const formatDateTime = (dateField: any) => {
     if (!dateField) return 'No definida';
@@ -73,11 +83,20 @@ export function AgendaDetail() {
                   </div>
                 )}
               </div>
-              
-              <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-8 leading-tight tracking-tight">
+
+              <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight tracking-tight">
                 {event.title}
               </h1>
-              
+
+              {/* Botones de compartir debajo del título */}
+              <div className="mb-8 pb-8 border-b border-slate-200">
+                <ShareButtons
+                  title={event.title}
+                  description={`Evento en ${event.location} - Fredy Arenas El Amigo de Caldas`}
+                  imageUrl={event.imageUrl}
+                />
+              </div>
+
               <div className="flex items-start gap-4 text-slate-700 mb-8 p-6 bg-gradient-to-br from-yellow-50 to-red-50 rounded-2xl border border-yellow-100">
                 <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-white shadow-md flex items-center justify-center">
                   <FiMapPin className="h-6 w-6 text-red-600" />
@@ -93,6 +112,16 @@ export function AgendaDetail() {
                 <div className="whitespace-pre-wrap leading-relaxed text-slate-700 text-lg">
                   {event.description}
                 </div>
+              </div>
+
+              {/* Botones de compartir al final también */}
+              <div className="mt-12 pt-8 border-t border-slate-200">
+                <p className="text-sm font-bold text-slate-700 mb-4">¿Te interesa este evento? Invita a otros:</p>
+                <ShareButtons
+                  title={event.title}
+                  description={`Evento en ${event.location} - Fredy Arenas El Amigo de Caldas`}
+                  imageUrl={event.imageUrl}
+                />
               </div>
             </CardContent>
           </Card>
