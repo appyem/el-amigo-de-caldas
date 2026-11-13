@@ -4,6 +4,7 @@ import { AdminLayout } from '@/app/layouts/AdminLayout';
 import { ProtectedRoute } from '@/components/common/ProtectedRoute';
 import { RoleGuard } from '@/components/common/RoleGuard';
 import { ToastProvider } from '@/components/ui/Toast';
+import { ScrollToTop } from '@/components/common/ScrollToTop';
 import { Home } from '@/app/routes/public/Home';
 import { Login } from '@/app/routes/auth/Login';
 import { Dashboard } from '@/app/routes/admin/Dashboard';
@@ -27,6 +28,7 @@ function App() {
   return (
     <BrowserRouter>
       <ToastProvider />
+      <ScrollToTop />
       <Routes>
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />
