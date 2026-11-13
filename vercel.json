@@ -1,5 +1,7 @@
 {
   "rewrites": [
+    { "source": "/noticias/:path*", "destination": "/noticias.html" },
+    { "source": "/agenda/:path*", "destination": "/agenda.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
