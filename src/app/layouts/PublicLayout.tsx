@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/utils/cn';
 import { FiMenu, FiX, FiUser, FiLogIn } from 'react-icons/fi';
 import { useAuth } from '@/hooks/useAuth';
-import FreddyLogo from '@/assets/Freddy-arenas.jpg';
+import FreddyLogo from '@/assets/fredy-arenas.jpg';
 import partidoLogo from '@/assets/partido-u.jpeg';
 
 const publicNavigation = [
